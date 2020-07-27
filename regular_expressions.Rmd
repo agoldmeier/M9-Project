@@ -27,11 +27,11 @@ auto_accidents2
 ```
 
 
-You can also embed plots, for example:
+Below, I am attempting to change the street names from all upper case to normal formatting. This would be the first letter being upper case and the following to be lower. 
 
 ```{r pressure, echo=FALSE}
-auto_accidents3 <- auto_accidents2%>%
-  
+auto_accidents2%>%
+  mutate(on_street_name=str_replace(on_street_name,"([A-Z])(.*)",\L$1$2))
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
