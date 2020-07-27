@@ -1,0 +1,37 @@
+---
+title: "M9 Project"
+author: "Aaron G"
+date: "7/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("tidyverse")
+library(tidyverse)
+auto_accidents <- read_csv("https://data.cityofnewyork.us/resource/h9gi-nx95.csv")
+auto_accidents
+```
+
+## Auto Accidents
+
+We are working with a data set containing information regarding motor vehicle collisions. In the original dataset, the addresses of where the collisions have occurred were cardinal and not ordinal. In the table below, I have narrowed each address down to the space after each number in order to place the correct suffix at the end. 
+
+```{r cars}
+auto_accidents2 <- auto_accidents%>%
+  mutate(on_street_name=str_replace(on_street_name,"(?<=1)\\s","st "))%>%
+  mutate(on_street_name=str_replace(on_street_name,"(?<=2)\\s","nd "))%>%
+  mutate(on_street_name=str_replace(on_street_name,"(?<=3)\\s","rd "))%>%
+  mutate(on_street_name=str_replace(on_street_name,"(?<=4)\\s","th "))
+auto_accidents2
+```
+
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+auto_accidents3 <- auto_accidents2%>%
+  
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
